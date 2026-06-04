@@ -112,84 +112,85 @@ const ParallaxImages = () => {
       {/* Column 1 - Staggered */}
       <div className="space-y-4 md:space-y-16 flex flex-col justify-start">
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=70&w=600&auto=format&fit=crop"
           alt="High-end styling and blowout session"
           start={-100}
           end={100}
+          priority={true}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=70&w=600&auto=format&fit=crop"
           alt="Luxury hair washing and shampoo conditioning"
           start={50}
           end={-100}
           className="w-11/12 rounded-2xl border border-white/10 shadow-2xl self-end"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=70&w=600&auto=format&fit=crop"
           alt="Precision cuts in premium barber chair"
           start={-120}
           end={80}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?q=70&w=600&auto=format&fit=crop"
           alt="Professional styling shears and styling comb details"
           start={80}
           end={-80}
           className="w-10/12 rounded-2xl border border-white/10 shadow-2xl self-start"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=70&w=600&auto=format&fit=crop"
           alt="High-end salon styling client care"
           start={-100}
           end={100}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1634449571010-02389ed0fde1?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1634449571010-02389ed0fde1?q=70&w=600&auto=format&fit=crop"
           alt="Creative design look modeling"
           start={60}
           end={-120}
           className="w-11/12 rounded-2xl border border-white/10 shadow-2xl self-end"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=70&w=600&auto=format&fit=crop"
           alt="Air Area luxury salon interior design details"
           start={-80}
           end={80}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=70&w=600&auto=format&fit=crop"
           alt="Premium hair prep and tools details"
           start={70}
           end={-90}
           className="w-10/12 rounded-2xl border border-white/10 shadow-2xl self-start"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=70&w=600&auto=format&fit=crop"
           alt="Healthy hair model shine and beauty look"
           start={-90}
           end={70}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1505944270255-72b8c68c6a70?q=70&w=600&auto=format&fit=crop"
           alt="Cosmetology and premium styling products"
           start={50}
           end={-70}
           className="w-11/12 rounded-2xl border border-white/10 shadow-2xl self-end"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1620331789556-9765960c9594?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1620331789556-9765960c9594?q=70&w=600&auto=format&fit=crop"
           alt="Vivid color dye foils process"
           start={-110}
           end={90}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=70&w=600&auto=format&fit=crop"
           alt="Scissor cutting detail at master salon"
           start={80}
           end={-80}
@@ -200,84 +201,85 @@ const ParallaxImages = () => {
       {/* Column 2 - Staggered offset */}
       <div className="space-y-4 md:space-y-16 pt-12 md:pt-24 flex flex-col justify-start">
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=70&w=600&auto=format&fit=crop"
           alt="Premium shears and styling kit"
           start={100}
           end={-100}
+          priority={true}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=70&w=600&auto=format&fit=crop"
           alt="Master salon hair color treatment"
           start={-80}
           end={120}
           className="w-11/12 rounded-2xl border border-white/10 shadow-2xl self-start"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1605497746444-ac9dbd324486?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1605497746444-ac9dbd324486?q=70&w=600&auto=format&fit=crop"
           alt="Luxury haircut design styling details"
           start={120}
           end={-80}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1527799863836-7241285289f6?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1527799863836-7241285289f6?q=70&w=600&auto=format&fit=crop"
           alt="Client curling iron styling details"
           start={-50}
           end={100}
           className="w-10/12 rounded-2xl border border-white/10 shadow-2xl self-end"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=70&w=600&auto=format&fit=crop"
           alt="Hair color details and texture styling"
           start={90}
           end={-90}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=70&w=600&auto=format&fit=crop"
           alt="Premium hair vanity setup"
           start={-100}
           end={100}
           className="w-11/12 rounded-2xl border border-white/10 shadow-2xl self-start"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1617897903246-719242758050?q=70&w=600&auto=format&fit=crop"
           alt="Color foils dye process"
           start={60}
           end={-140}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=70&w=600&auto=format&fit=crop"
           alt="Hairdresser styling client session"
           start={-70}
           end={70}
           className="w-10/12 rounded-2xl border border-white/10 shadow-2xl self-end"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=70&w=600&auto=format&fit=crop"
           alt="Model hair volume and bounce styling"
           start={80}
           end={-80}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=70&w=600&auto=format&fit=crop"
           alt="Hair model style posing"
           start={-60}
           end={90}
           className="w-11/12 rounded-2xl border border-white/10 shadow-2xl self-start"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=70&w=600&auto=format&fit=crop"
           alt="Salon tools and care items"
           start={90}
           end={-60}
           className="w-full rounded-2xl border border-white/10 shadow-2xl"
         />
         <ParallaxImg
-          src="https://images.unsplash.com/photo-1560869713-7d0a29430f39?q=80&w=1500&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1560869713-7d0a29430f39?q=70&w=600&auto=format&fit=crop"
           alt="Modern luxury salon wash basin"
           start={-80}
           end={80}
@@ -295,9 +297,10 @@ interface ParallaxImgProps {
   src: string;
   start: number;
   end: number;
+  priority?: boolean;
 }
 
-const ParallaxImg = ({ className, alt, src, start, end }: ParallaxImgProps) => {
+const ParallaxImg = ({ className, alt, src, start, end, priority = false }: ParallaxImgProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [imgSrc, setImgSrc] = useState(src);
   const [isLoading, setIsLoading] = useState(true);
@@ -332,7 +335,7 @@ const ParallaxImg = ({ className, alt, src, start, end }: ParallaxImgProps) => {
   const y = useTransform(scrollYProgress, [0, 1], [adjustedStart, adjustedEnd]);
   const transform = useMotionTemplate`translateY(${y}px)`;
 
-  const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1500&auto=format&fit=crop";
+  const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=70&w=600&auto=format&fit=crop";
 
   const handleError = () => {
     if (!attemptedFallback) {
@@ -389,6 +392,7 @@ const ParallaxImg = ({ className, alt, src, start, end }: ParallaxImgProps) => {
           alt={alt}
           onLoad={handleLoad}
           onError={handleError}
+          loading={priority ? "eager" : "lazy"}
           className={`w-full h-full object-cover transition-opacity duration-500 ${
             isLoading ? "opacity-0" : "opacity-100"
           }`}

@@ -26,7 +26,7 @@ import {
 import { FiMessageSquare, FiCompass, FiUsers } from "react-icons/fi";
 
 // Safe image component with client-side error handling fallback
-const SafeImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
+const SafeImage = ({ src, alt, className, priority = false }: { src: string; alt: string; className?: string; priority?: boolean }) => {
   const [imgSrc, setImgSrc] = useState(src);
   const [isLoading, setIsLoading] = useState(true);
   const [isFailed, setIsFailed] = useState(false);
@@ -39,7 +39,7 @@ const SafeImage = ({ src, alt, className }: { src: string; alt: string; classNam
     setAttemptedFallback(false);
   }, [src]);
 
-  const FALLBACK = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=600&auto=format&fit=crop";
+  const FALLBACK = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=70&w=500&auto=format&fit=crop";
 
   const handleError = () => {
     if (!attemptedFallback) {
@@ -88,6 +88,7 @@ const SafeImage = ({ src, alt, className }: { src: string; alt: string; classNam
           alt={alt}
           onLoad={handleLoad}
           onError={handleError}
+          loading={priority ? "eager" : "lazy"}
           className={`w-full h-full object-cover transition-opacity duration-300 ${
             isLoading ? "opacity-0" : "opacity-100"
           }`}
@@ -191,7 +192,7 @@ const STYLISTS: StylistType[] = [
     specialty: "Precision Cuts & Balayage",
     experience: "12 years",
     bio: "Elena trained in Paris and London, bringing a sharp European sensibility to custom cuts and effortless painting techniques.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1500&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=70&w=500&auto=format&fit=crop",
     tags: ["Balayage Architect", "Couture Cuts", "French Shag", "Textured Layers"],
     portfolio: [
       { image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop", title: "Sculpted French Bob", desc: "Symmetrical volume & feathered edges.", category: "Cuts" },
@@ -208,7 +209,7 @@ const STYLISTS: StylistType[] = [
     specialty: "Vivid Tones & Color Correction",
     experience: "9 years",
     bio: "Marcus is a master of chemical safety and high-contrast color shifts. He specializes in healthy, bright transformations.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1500&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=70&w=500&auto=format&fit=crop",
     tags: ["Color Correction", "Vivid Neon", "Platinum Ice", "Bond Protection"],
     portfolio: [
       { image: "https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=600&auto=format&fit=crop", title: "Vivid Copper Melt", desc: "Glossy ginger tones with protection.", category: "Color" },
@@ -225,7 +226,7 @@ const STYLISTS: StylistType[] = [
     specialty: "Editorial Styling & Extensions",
     experience: "8 years",
     bio: "Sienna's work has been featured in top fashion journals. She excels in creating voluminous event locks and seamless hair extensions.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1500&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=70&w=500&auto=format&fit=crop",
     tags: ["Silk Extensions", "Editorial Updos", "Bridal Styling", "Gala Volume"],
     portfolio: [
       { image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop", title: "Editorial Volume Waves", desc: "Hollywood-ready bouncy blowouts.", category: "Styling" },
