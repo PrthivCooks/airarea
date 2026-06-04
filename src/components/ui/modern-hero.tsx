@@ -22,11 +22,25 @@ const SECTION_HEIGHT = 2600;
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [sectionHeight, setSectionHeight] = useState(SECTION_HEIGHT);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSectionHeight(1500); // Tighter scroll for mobile
+      } else {
+        setSectionHeight(SECTION_HEIGHT);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div
       ref={containerRef}
-      style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
+      style={{ height: `calc(${sectionHeight}px + 100vh)` }}
       className="relative w-full"
     >
       <CenterImage containerRef={containerRef} />
@@ -284,41 +298,103 @@ interface ParallaxImgProps {
 }
 
 const ParallaxImg = ({ className, alt, src, start, end }: ParallaxImgProps) => {
-  const ref = useRef<HTMLImageElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [imgSrc, setImgSrc] = useState(src);
+  const [isLoading, setIsLoading] = useState(true);
   const [isFailed, setIsFailed] = useState(false);
+  const [attemptedFallback, setAttemptedFallback] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setImgSrc(src);
+    setIsLoading(true);
     setIsFailed(false);
+    setAttemptedFallback(false);
   }, [src]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const adjustedStart = isMobile ? start * 0.3 : start;
+  const adjustedEnd = isMobile ? end * 0.3 : end;
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: [`${start}px end`, `end ${end * -1}px`],
+    offset: [`${adjustedStart}px end`, `end ${adjustedEnd * -1}px`],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [start, end]);
+  const y = useTransform(scrollYProgress, [0, 1], [adjustedStart, adjustedEnd]);
   const transform = useMotionTemplate`translateY(${y}px)`;
 
   const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1500&auto=format&fit=crop";
 
   const handleError = () => {
-    if (!isFailed) {
+    if (!attemptedFallback) {
       setImgSrc(FALLBACK_IMAGE);
+      setAttemptedFallback(true);
+    } else {
       setIsFailed(true);
+      setIsLoading(false);
     }
   };
 
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <motion.img
-      src={imgSrc}
-      alt={alt}
-      className={className}
+    <motion.div
       ref={ref}
       style={{ transform }}
-      onError={handleError}
-    />
+      className={`relative overflow-hidden aspect-[4/5] bg-zinc-900 ${className || ""}`}
+    >
+      {/* Loading Skeleton */}
+      {isLoading && (
+        <div className="absolute inset-0 bg-zinc-900/90 flex flex-col items-center justify-center select-none z-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
+          <div className="flex flex-col items-center gap-2 z-10">
+            <div className="w-6 h-6 rounded-full border-2 border-amber-500/20 border-t-amber-500 animate-spin" />
+            <span className="text-[9px] uppercase tracking-[0.25em] text-zinc-500 font-medium">Loading</span>
+          </div>
+        </div>
+      )}
+
+      {/* Styled Error Placeholder */}
+      {isFailed && (
+        <div className="absolute inset-0 bg-zinc-950 border border-white/5 flex flex-col items-center justify-center p-4 text-center select-none z-10">
+          <div className="text-amber-500/40 mb-2 animate-pulse">
+            <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span className="text-[9px] uppercase tracking-widest text-zinc-500 font-semibold block mb-1">
+            Image Unavailable
+          </span>
+          <span className="text-[9px] text-zinc-600 line-clamp-2 max-w-[120px] mx-auto leading-tight">
+            {alt}
+          </span>
+        </div>
+      )}
+
+      {/* Actual Image */}
+      {!isFailed && (
+        <img
+          src={imgSrc}
+          alt={alt}
+          onLoad={handleLoad}
+          onError={handleError}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${
+            isLoading ? "opacity-0" : "opacity-100"
+          }`}
+        />
+      )}
+    </motion.div>
   );
 };
 

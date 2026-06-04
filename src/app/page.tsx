@@ -28,29 +28,72 @@ import { FiMessageSquare, FiCompass, FiUsers } from "react-icons/fi";
 // Safe image component with client-side error handling fallback
 const SafeImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => {
   const [imgSrc, setImgSrc] = useState(src);
+  const [isLoading, setIsLoading] = useState(true);
   const [isFailed, setIsFailed] = useState(false);
+  const [attemptedFallback, setAttemptedFallback] = useState(false);
 
   useEffect(() => {
     setImgSrc(src);
+    setIsLoading(true);
     setIsFailed(false);
+    setAttemptedFallback(false);
   }, [src]);
 
   const FALLBACK = "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=600&auto=format&fit=crop";
 
   const handleError = () => {
-    if (!isFailed) {
+    if (!attemptedFallback) {
       setImgSrc(FALLBACK);
+      setAttemptedFallback(true);
+    } else {
       setIsFailed(true);
+      setIsLoading(false);
     }
   };
 
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <img
-      src={imgSrc}
-      alt={alt}
-      className={className}
-      onError={handleError}
-    />
+    <div className={`relative overflow-hidden ${className || ""}`}>
+      {/* Loading Skeleton */}
+      {isLoading && (
+        <div className="absolute inset-0 bg-zinc-900/90 flex flex-col items-center justify-center select-none z-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
+          <div className="w-6 h-6 rounded-full border-2 border-amber-500/20 border-t-amber-500 animate-spin" />
+        </div>
+      )}
+
+      {/* Styled Error Placeholder */}
+      {isFailed && (
+        <div className="absolute inset-0 bg-zinc-950 border border-white/5 flex flex-col items-center justify-center p-4 text-center select-none z-10">
+          <div className="text-amber-500/40 mb-2 animate-pulse">
+            <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span className="text-[8px] uppercase tracking-widest text-zinc-500 font-semibold block mb-0.5">
+            Error
+          </span>
+          <span className="text-[8px] text-zinc-650 line-clamp-1 max-w-[80px] mx-auto">
+            {alt}
+          </span>
+        </div>
+      )}
+
+      {!isFailed && (
+        <img
+          src={imgSrc}
+          alt={alt}
+          onLoad={handleLoad}
+          onError={handleError}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${
+            isLoading ? "opacity-0" : "opacity-100"
+          }`}
+        />
+      )}
+    </div>
   );
 };
 
